@@ -54,11 +54,6 @@ docker-compose up -d --build
 ```sh
 java -jar target/app-0.0.1-SNAPSHOT.jar
 ```
-   
-Step 4: Configure the application
-Update the application.properties with the appropriate database settings:
-
-Step 5: Run the Spring Boot application
 
 ## API Documentation
 The API documentation is available at http://localhost:8089/swagger-ui.html.
