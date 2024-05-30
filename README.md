@@ -48,6 +48,13 @@ Start the MySQL container:
 docker-compose up -d --build
 ```
 
+### Step 4: Running the Application:
+
+**Using Java:**
+```sh
+java -jar target/app-0.0.1-SNAPSHOT.jar
+```
+   
 Step 4: Configure the application
 Update the application.properties with the appropriate database settings:
 

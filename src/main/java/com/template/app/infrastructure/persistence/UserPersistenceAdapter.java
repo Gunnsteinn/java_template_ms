@@ -29,9 +29,7 @@ public class UserPersistenceAdapter implements UserOutputPort {
      */
     @Override
     public List<User> findAllActive() {
-        List<UserDAO> activeUsers = userRepository.findAllActive();
-        System.out.println("ACAAAA" + activeUsers);
-        return userDAOMapper.convertToDomainList(activeUsers);
+        return userDAOMapper.convertToDomainList(userRepository.findAllActive());
     }
 
     /**
