@@ -1,0 +1,72 @@
+# info.app: Contains metadata about the application such as encoding and Java version.
+# app: Specifies the version and name of the application.
+# spring.application: Sets the name of the Spring application.
+# spring.main: Disables the Spring Boot startup banner.
+# spring.jackson: Configures JSON property naming strategy.
+# spring.datasource: Configures the database connection details including URL, username, password, driver class, and initialization mode.
+# spring.jpa: Configures JPA settings, enabling SQL logging, disabling Open Session in View to prevent lazy loading issues, and setting Hibernate to automatically update the database schema.
+# spring.sql.init: Specifies the mode for database initialization and the locations of the schema and data SQL scripts.
+# spring.doc: Configures Swagger UI and API documentation paths and enables them.
+# server: Configures server settings, including the port and enabling HTTP response compression.
+# user: Sets the application's default timezone.
+# logging: Specifies the path to the Log4j2 configuration file.
+# ------------------------------------------------------------------------------------------------
+info:
+  app:
+    encoding: '@project.build.sourceEncoding@'    # Specifies the source encoding used in the project, typically set in the build file
+    java:
+      source: '@java.version@'                    # Specifies the source version of Java used in the project
+      target: '@java.version@'                    # Specifies the target version of Java for compilation
+
+app:
+  version: '@project.version@'                    # The version of the application, typically set in the build file
+  name: '@project.name@'                          # The name of the application, typically set in the build file
+
+spring:
+  application:
+    name: '@project.name@'                        # The name of the Spring application
+
+  main:
+    banner-mode: 'OFF'                            # Disables the Spring Boot startup banner
+
+  jackson:
+    property-naming-strategy: 'LOWER_CAMEL_CASE'  # Sets the JSON property naming strategy to lowerCamelCase
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/template     # JDBC URL for the MySQL database
+    username: template_db                         # Username for the database
+    password: T3mpl@t3!                           # Password for the database
+    driver-class-name: com.mysql.cj.jdbc.Driver   # MySQL JDBC driver class
+    initialization-mode: always                   # Ensures that the database is initialized with the schema and data scripts
+
+  jpa:
+    show-sql: true                                # Enables logging of SQL statements
+    open-in-view: false                           # Disables Open Session in View, which prevents lazy loading issues
+    hibernate:
+      ddl-auto: update                            # Automatically updates the database schema to match the entity definitions
+
+  sql:
+    init:
+      mode: always                                # Always initialize the database with the specified scripts
+      platform: mysql                             # Specifies the database platform
+      schema-locations: classpath:schema.sql      # Path to the schema SQL script
+      data-locations: classpath:data.sql          # Path to the data SQL script
+
+  doc:
+    swagger-ui:
+      path: /doc/swagger-ui.html                  # Path to the Swagger UI
+      enabled: true                               # Enables Swagger UI
+    api-docs:
+      path: /api-docs                             # Path to the API documentation
+      enabled: true                               # Enables API documentation
+
+server:
+  port: 8089                                      # Port, on which the server will run
+  compression:
+    enabled: true                                 # Enables HTTP response compression
+
+user:
+  timezone: 'UTC'                                 # Sets the application's default timezone to UTC
+
+logging:
+  config: classpath:log4j2-local.xml              # Path to the Log4j2 configuration file
